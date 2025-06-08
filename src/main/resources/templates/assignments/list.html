@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>История заселений</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+<h1>История заселений</h1>
+<p><a href="/assignments/new">Заселить нового студента</a></p>
+
+<table>
+  <tr>
+    <th>Студент</th>
+    <th>Комната</th>
+    <th>Дата заселения</th>
+    <th>Дата выселения</th>
+  </tr>
+  <tr th:each="a : ${assignments}">
+    <td th:text="${a.student.name}"></td>
+    <td th:text="${a.room.roomNumber}"></td>
+    <td th:text="${a.checkInDate}"></td>
+    <td th:text="${a.checkOutDate} ?: '—'"></td>
+  </tr>
+</table>
+</body>
+</html>

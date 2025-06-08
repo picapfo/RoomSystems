@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Система заселения</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        li {
+            width: 100%;
+            max-width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        a {
+            display: block;
+            padding: 15px 25px;
+            background: white;
+            color: #2575fc;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        a::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 117, 252, 0.1);
+            transition: left 0.3s;
+        }
+
+        a:hover::after {
+            left: 0;
+        }
+
+        a:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<h1>Добро пожаловать в систему заселения общежития</h1>
+<ul>
+    <li><a href="/students">📚 Список студентов</a></li>
+    <li><a href="/rooms">🏠 Список комнат</a></li>
+    <li><a href="/assignments">📜 История заселений</a></li>
+    <li><a href="/assignments/new">➕ Заселить студента</a></li>
+</ul>
+</body>
+</html>

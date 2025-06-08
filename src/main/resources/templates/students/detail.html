@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Студент</title>
+</head>
+<body>
+<h1>Данные студента</h1>
+<p><strong>Имя:</strong> <span th:text="${student.name}"></span></p>
+<p><strong>Номер студенческого:</strong> <span th:text="${student.studentId}"></span></p>
+<p><strong>Факультет:</strong> <span th:text="${student.faculty}"></span></p>
+
+<form th:action="@{/templates/students/{id}/delete(id=${student.id})}" method="post">
+    <button type="submit">Удалить</button>
+</form>
+<a href="/studentss/students">Назад</a>
+</body>
+</html>

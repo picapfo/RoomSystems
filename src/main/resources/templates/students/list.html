@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Студенты</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+<h1>Студенты</h1>
+<h2>Добавить студента</h2>
+<p><a href="/students/new">+ Добавить нового студента</a></p>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Имя</th>
+    <th>Номер студенческого</th>
+    <th>Факультет</th>
+    <th>Действия</th>
+  </tr>
+  <tr th:each="student : ${students}">
+    <td th:text="${student.id}"></td>
+    <td th:text="${student.name}"></td>
+    <td th:text="${student.studentId}"></td>
+    <td th:text="${student.faculty}"></td>
+    <td><a th:href="@{/students/{id}(id=${student.id})}">Просмотр</a></td>
+  </tr>
+</table>
+</body>
+</html>

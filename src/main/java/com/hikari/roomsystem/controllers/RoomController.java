@@ -3,33 +3,42 @@ package com.hikari.roomsystem.controllers;
 import com.hikari.roomsystem.dto.RoomDto;
 import com.hikari.roomsystem.entities.Room;
 import com.hikari.roomsystem.services.RoomService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/rooms")
+@Controller
+@RequestMapping("/rooms")
+@RequiredArgsConstructor
 public class RoomController {
+
     private final RoomService roomService;
 
-    public RoomController(RoomService roomService) {
-        this.roomService = roomService;
+    @GetMapping
+    public String listRooms(Model model) {
+        model.addAttribute("rooms", roomService.getAllRooms());
+        return "rooms/list"; // templates/rooms/list.html
+    }
+
+    @GetMapping("/new")
+    public String showRoomForm(Model model) {
+        model.addAttribute("room", new RoomDto());
+        return "rooms/form"; // templates/rooms/form.html
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Room createRoom(@RequestBody RoomDto dto) {
-        return roomService.createRoom(dto);
-    }
-
-    @GetMapping
-    public List<Room> getAllRooms() {
-        return roomService.getAllRooms();
+    public String createRoom(@ModelAttribute RoomDto dto) {
+        roomService.createRoom(dto);
+        return "redirect:/rooms";
     }
 
     @GetMapping("/{roomNumber}")
-    public Room getRoom(@PathVariable String roomNumber) {
-        return roomService.getRoom(roomNumber);
+    public String viewRoom(@PathVariable String roomNumber, Model model) {
+        model.addAttribute("room", roomService.getRoom(roomNumber));
+        return "rooms/detail"; // templates/rooms/detail.html
     }
 }

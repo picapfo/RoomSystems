@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Комната</title>
+</head>
+<body>
+<h1>Информация о комнате</h1>
+<p><strong>Номер:</strong> <span th:text="${room.roomNumber}"></span></p>
+<p><strong>Этаж:</strong> <span th:text="${room.floor}"></span></p>
+<p><strong>Вместимость:</strong> <span th:text="${room.capacity}"></span></p>
+<a href="/assignments/room/{roomNumber}" th:href="@{/assignments/room/{roomNumber}(roomNumber=${room.roomNumber})}">Заселения</a><br>
+<a href="/students/roomsates/students/rooms">Назад</a>
+</body>
+</html>

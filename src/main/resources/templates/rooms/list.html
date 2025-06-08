@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Комнаты</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+<h1>Комнаты</h1>
+<h2>Добавить комнату</h2>
+<p><a href="/rooms/new">+ Добавить новую комнату</a></p>
+
+<table>
+    <tr>
+        <th>Номер</th>
+        <th>Этаж</th>
+        <th>Вместимость</th>
+        <th>Действия</th>
+    </tr>
+    <tr th:each="room : ${rooms}">
+        <td th:text="${room.roomNumber}"></td>
+        <td th:text="${room.floor}"></td>
+        <td th:text="${room.capacity}"></td>
+        <td><a th:href="@{/rooms/{number}(number=${room.roomNumber})}">Просмотр</a></td>
+    </tr>
+</table>
+</body>
+</html>

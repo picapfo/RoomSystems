@@ -5,6 +5,8 @@ import com.hikari.roomsystem.entities.Student;
 import com.hikari.roomsystem.repositories.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentService {
     public StudentService(StudentRepository studentRepository){
@@ -27,4 +29,6 @@ public class StudentService {
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
+
+    public List<Student> getAllStudents() {return studentRepository.findAll();}
 }

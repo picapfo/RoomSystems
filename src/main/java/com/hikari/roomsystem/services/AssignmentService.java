@@ -53,4 +53,8 @@ public class AssignmentService {
         Room room = roomRepository.findByRoomNumber(roomNumber);
         return assignmentRepository.findByRoomId(room.getId());
     }
+
+    public List<RoomAssignment> getAllAssignments() {
+        return assignmentRepository.findAll();
+    }
 }
